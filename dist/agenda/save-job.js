@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.saveJob = void 0;
 const debug_1 = __importDefault(require("debug"));
 const utils_1 = require("../utils");
-const debug = (0, debug_1.default)("agenda:saveJob");
+const debug = debug_1.default("agenda:saveJob");
 /**
  * Given a result for findOneAndUpdate() or insert() above, determine whether to process
  * the job immediately or to let the processJobs() interval pick it up later

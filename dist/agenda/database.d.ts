@@ -1,4 +1,4 @@
-import { AnyError, Collection } from "mongodb";
+import { AnyError, Collection, MongoClientOptions } from "mongodb";
 import { Agenda } from ".";
 /**
  * Connect to the spec'd MongoDB server and database.
@@ -16,5 +16,5 @@ import { Agenda } from ".";
  * @param [options] options for connecting
  * @param [cb] callback of MongoDB connection
  */
-export declare const database: (this: Agenda, url: string, collection?: string, options?: MongoClientOptions, cb?: ((error: AnyError | undefined, collection: Collection<any> | null) => void) | undefined) => Agenda | void;
+export declare const database: (this: Agenda, url: string, collection?: string | undefined, options?: MongoClientOptions, cb?: ((error: AnyError | undefined, collection: Collection<any> | null) => void) | undefined) => Agenda | void;
 //# sourceMappingURL=database.d.ts.map

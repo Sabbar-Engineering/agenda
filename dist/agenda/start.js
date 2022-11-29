@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.start = void 0;
 const debug_1 = __importDefault(require("debug"));
 const utils_1 = require("../utils");
-const debug = (0, debug_1.default)("agenda:start");
+const debug = debug_1.default("agenda:start");
 /**
  * Starts processing jobs using processJobs() methods, storing an interval ID
  * This method will only resolve if a db has been set up beforehand.

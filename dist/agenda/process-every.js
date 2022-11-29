@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.processEvery = void 0;
 const debug_1 = __importDefault(require("debug"));
 const human_interval_1 = __importDefault(require("human-interval"));
-const debug = (0, debug_1.default)("agenda:processEvery");
+const debug = debug_1.default("agenda:processEvery");
 /**
  * Set the default process interval
  * @name Agenda#processEvery
@@ -16,7 +16,7 @@ const debug = (0, debug_1.default)("agenda:processEvery");
 const processEvery = function (time) {
     debug("Agenda.processEvery(%d)", time);
     // @ts-expect-error
-    this._processEvery = (0, human_interval_1.default)(time);
+    this._processEvery = human_interval_1.default(time);
     return this;
 };
 exports.processEvery = processEvery;

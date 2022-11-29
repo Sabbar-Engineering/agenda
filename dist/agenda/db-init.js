@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dbInit = void 0;
 const debug_1 = __importDefault(require("debug"));
-const debug = (0, debug_1.default)("agenda:db_init");
+const debug = debug_1.default("agenda:db_init");
 /**
  * Setup and initialize the collection used to manage Jobs.
  * @name Agenda#dbInit

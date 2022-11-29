@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { EventEmitter } from "events";
 import { AnyError, Collection, Db as MongoDb, MongoClient, MongoClientOptions } from "mongodb";
 import { Job } from "../job";

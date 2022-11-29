@@ -45,7 +45,7 @@ class Job {
         args.priority =
             args.priority === undefined
                 ? define_1.JobPriority.normal
-                : (0, utils_1.parsePriority)(args.priority);
+                : utils_1.parsePriority(args.priority);
         // Set shouldSaveResult option
         args.shouldSaveResult = args.shouldSaveResult || false;
         // Set attrs to args

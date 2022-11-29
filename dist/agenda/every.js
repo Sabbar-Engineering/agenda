@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.every = void 0;
 const debug_1 = __importDefault(require("debug"));
-const debug = (0, debug_1.default)("agenda:every");
+const debug = debug_1.default("agenda:every");
 /**
  * Creates a scheduled job with given interval and name/names of the job to run
  * @name Agenda#every

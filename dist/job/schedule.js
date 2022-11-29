@@ -14,7 +14,7 @@ const date_js_1 = __importDefault(require("date.js"));
  */
 const schedule = function (time) {
     const d = new Date(time);
-    this.attrs.nextRunAt = Number.isNaN(d.getTime()) ? (0, date_js_1.default)(time) : d;
+    this.attrs.nextRunAt = Number.isNaN(d.getTime()) ? date_js_1.default(time) : d;
     return this;
 };
 exports.schedule = schedule;

@@ -1,3 +1,4 @@
+import { Filter } from "mongodb";
 import { Agenda } from ".";
 /**
  * Disables any jobs matching the passed MongoDB query by setting the `disabled` flag to `true`

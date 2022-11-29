@@ -31,7 +31,7 @@ export interface DefineOptions {
      */
     shouldSaveResult?: boolean;
 }
-export type Processor<T> = ((job: Job<T>) => Promise<void>) | ((job: Job<T>, done: () => void) => void);
+export declare type Processor<T> = ((job: Job<T>) => Promise<void>) | ((job: Job<T>, done: () => void) => void);
 /**
  * Setup definition for job
  * Method is used by consumers of lib to setup their functions

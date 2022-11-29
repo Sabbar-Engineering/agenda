@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.fail = void 0;
 const debug_1 = __importDefault(require("debug"));
-const debug = (0, debug_1.default)("agenda:job");
+const debug = debug_1.default("agenda:job");
 /**
  * Fails the job with a reason (error) specified
  * @name Job#fail

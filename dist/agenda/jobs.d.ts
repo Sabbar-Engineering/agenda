@@ -1,3 +1,4 @@
+import { Filter } from "mongodb";
 import { Agenda } from ".";
 import { Job } from "../job";
 /**

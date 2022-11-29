@@ -7,7 +7,7 @@ exports.database = void 0;
 const debug_1 = __importDefault(require("debug"));
 const mongodb_1 = require("mongodb");
 const has_mongo_protocol_1 = require("./has-mongo-protocol");
-const debug = (0, debug_1.default)("agenda:database");
+const debug = debug_1.default("agenda:database");
 /**
  * Connect to the spec'd MongoDB server and database.
  *
@@ -25,7 +25,7 @@ const debug = (0, debug_1.default)("agenda:database");
  * @param [cb] callback of MongoDB connection
  */
 const database = function (url, collection, options = {}, cb) {
-    if (!(0, has_mongo_protocol_1.hasMongoProtocol)(url)) {
+    if (!has_mongo_protocol_1.hasMongoProtocol(url)) {
         url = "mongodb://" + url;
     }
     collection = collection || "agendaJobs";

@@ -16,7 +16,7 @@ import { touch } from "./touch";
 import { setShouldSaveResult } from "./set-shouldsaveresult";
 import { Agenda } from "../agenda";
 import * as mongodb from "mongodb";
-type Modify<T, R> = Omit<T, keyof R> & R;
+declare type Modify<T, R> = Omit<T, keyof R> & R;
 export interface JobAttributesData {
     [key: string]: any;
 }

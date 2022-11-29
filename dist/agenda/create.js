@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.create = void 0;
 const debug_1 = __importDefault(require("debug"));
 const job_1 = require("../job");
-const debug = (0, debug_1.default)("agenda:create");
+const debug = debug_1.default("agenda:create");
 /**
  * Given a name and some data, create a new job
  * @name Agenda#create

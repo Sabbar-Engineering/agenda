@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.lockLimit = void 0;
 const debug_1 = __importDefault(require("debug"));
-const debug = (0, debug_1.default)("agenda:locklimit");
+const debug = debug_1.default("agenda:locklimit");
 /**
  * Set the default amount jobs that are allowed to be locked at one time (GLOBAL)
  * @name Agenda#locklimit

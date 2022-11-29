@@ -29,7 +29,7 @@ const jobs = function (query = {}, sort = {}, limit = 0, skip = 0) {
             .limit(limit)
             .skip(skip)
             .toArray();
-        return result.map((job) => (0, utils_1.createJob)(this, job));
+        return result.map((job) => utils_1.createJob(this, job));
     });
 };
 exports.jobs = jobs;

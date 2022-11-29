@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.close = void 0;
 const debug_1 = __importDefault(require("debug"));
-const debug = (0, debug_1.default)("agenda:close");
+const debug = debug_1.default("agenda:close");
 /** Close the db and it's underlying connections
  * Only works if agenda was instantiated without preconfigured mongoDb instance.
  * If the mongoDb instance was supplied during instantiation or via agenda.mongo, this function will do nothing and return agenda anyway.

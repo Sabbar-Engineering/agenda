@@ -7,7 +7,7 @@ const utils_1 = require("../utils");
  * @param priority priority of when job should be queued
  */
 const priority = function (priority) {
-    this.attrs.priority = (0, utils_1.parsePriority)(priority);
+    this.attrs.priority = utils_1.parsePriority(priority);
     return this;
 };
 exports.priority = priority;

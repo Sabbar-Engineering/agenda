@@ -8,5 +8,5 @@ import { Job } from ".";
  */
 export declare const unique: (this: Job, unique: any, options?: {
     insertOnly: boolean;
-}) => Job;
+} | undefined) => Job;
 //# sourceMappingURL=unique.d.ts.map

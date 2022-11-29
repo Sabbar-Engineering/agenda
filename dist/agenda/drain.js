@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.drain = void 0;
 const debug_1 = __importDefault(require("debug"));
-const debug = (0, debug_1.default)("agenda:drain");
+const debug = debug_1.default("agenda:drain");
 /**
  * Clear the interval that processes the jobs
  * @name Agenda#drain

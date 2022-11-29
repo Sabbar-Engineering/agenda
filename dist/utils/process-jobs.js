@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.processJobs = void 0;
 const debug_1 = __importDefault(require("debug"));
 const create_job_1 = require("./create-job");
-const debug = (0, debug_1.default)("agenda:internal:processJobs");
+const debug = debug_1.default("agenda:internal:processJobs");
 /**
  * Process methods for jobs
  * @param {Job} extraJob job to run immediately
@@ -142,7 +142,7 @@ const processJobs = function (extraJob) {
                 });
                 if (resp.value) {
                     // @ts-ignore
-                    const job = (0, create_job_1.createJob)(self, resp.value);
+                    const job = create_job_1.createJob(self, resp.value);
                     debug("found job [%s:%s] that can be locked on the fly", job.attrs.name, job.attrs._id);
                     self._lockedJobs.push(job);
                     definitions[job.attrs.name].locked++;

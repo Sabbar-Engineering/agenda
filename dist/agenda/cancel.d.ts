@@ -1,4 +1,5 @@
 import { Agenda } from ".";
+import { Document, Filter } from "mongodb";
 /**
  * Cancels any jobs matching the passed MongoDB query, and removes them from the database.
  * @name Agenda#cancel
