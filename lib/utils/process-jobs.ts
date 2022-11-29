@@ -221,6 +221,10 @@ export const processJobs = async function (
             name
           );
           job.attrs.lockedAt = null;
+          /**
+           * We need to mark job as failed
+           */
+          job.fail(new Error("Job timeout limit exceeded"))
           await self.saveJob(job);
           return;
         }
