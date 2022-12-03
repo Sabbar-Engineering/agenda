@@ -199,7 +199,6 @@ export const processJobs = async function (
       // Don't lock because of a limit we have set (lockLimit, etc)
       if (!shouldLock(name)) {
         debug("lock limit reached in queue filling for [%s]", name);
-        console.log("HOHOHOHOHO")
         return; // Goes to finally block
       }
 
@@ -216,8 +215,6 @@ export const processJobs = async function (
       // 4. Recursively run this same method we are in to check for more available jobs of same type!
       
       if (job) {
-        console.log(job,name,shouldLock(name))
-
         // Before en-queing job make sure we haven't exceed our lock limits
         if (!shouldLock(name)) {
           debug(
@@ -225,11 +222,7 @@ export const processJobs = async function (
             name
           );
           job.attrs.lockedAt = null;
-          /**
-           * We need to mark job as failed
-           */
-          job.fail(new Error("Job timeout limit exceeded"))
-          console.log("HEHEHEH")
+          
           await self.saveJob(job);
           return;
         }
