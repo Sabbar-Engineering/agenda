@@ -185,10 +185,6 @@ const processJobs = function (extraJob) {
                         if (!shouldLock(name)) {
                             debug("lock limit reached before job was returned. Releasing lock on [%s]", name);
                             job.attrs.lockedAt = null;
-                            /**
-                             * We need to mark job as failed
-                             */
-                            job.fail(new Error("Job timeout limit exceeded"));
                             yield self.saveJob(job);
                             return;
                         }

@@ -172,7 +172,6 @@ export const processJobs = async function (
       self._lockedJobs.push(job);
       definitions[job.attrs.name].locked++;
       enqueueJobs(job);
-
       jobProcessing();
     }
 
@@ -200,6 +199,7 @@ export const processJobs = async function (
       // Don't lock because of a limit we have set (lockLimit, etc)
       if (!shouldLock(name)) {
         debug("lock limit reached in queue filling for [%s]", name);
+        console.log("HOHOHOHOHO")
         return; // Goes to finally block
       }
 
@@ -214,8 +214,9 @@ export const processJobs = async function (
       // 2. Add count of locked jobs
       // 3. Queue the job to actually be run now that it is locked
       // 4. Recursively run this same method we are in to check for more available jobs of same type!
-
+      
       if (job) {
+        console.log(job,name,shouldLock(name))
 
         // Before en-queing job make sure we haven't exceed our lock limits
         if (!shouldLock(name)) {
@@ -228,6 +229,7 @@ export const processJobs = async function (
            * We need to mark job as failed
            */
           job.fail(new Error("Job timeout limit exceeded"))
+          console.log("HEHEHEH")
           await self.saveJob(job);
           return;
         }
@@ -237,7 +239,6 @@ export const processJobs = async function (
         definitions[job.attrs.name].locked++;
         enqueueJobs(job);
         await jobQueueFilling(name);
-
         jobProcessing();
       }
     } catch (error) {
@@ -257,8 +258,6 @@ export const processJobs = async function (
       return;
     }
 
-
-    
     // Store for all sorts of things
     const now = new Date();
 
@@ -266,7 +265,6 @@ export const processJobs = async function (
     const job = jobQueue.returnNextConcurrencyFreeJob(definitions);
 
     debug("[%s:%s] about to process job", job.attrs.name, job.attrs._id);
-
 
     // If the 'nextRunAt' time is older than the current time, run the job
     // Otherwise, setTimeout that gets called at the time of 'nextRunAt'
@@ -295,7 +293,6 @@ export const processJobs = async function (
      */
     function runOrRetry() {
       if (self._processInterval) {
-        
         // @todo: We should check if job exists
         const job = jobQueue.pop()!;
         const jobDefinition = definitions[job.attrs.name];
@@ -386,7 +383,6 @@ export const processJobs = async function (
     }
 
     // Re-process jobs now that one has finished
-
     jobProcessing();
   }
 };

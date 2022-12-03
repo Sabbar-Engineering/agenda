@@ -67,12 +67,24 @@ const findAndLockNextJob = function (jobName, definition) {
             debug("found a job available to lock, creating a new job on Agenda with id [%s]", result.value._id);
             // @ts-ignore
             job = utils_1.createJob(this, result.value);
-            if (result.value.lastRunAt && new Date(result.value.lastRunAt.getTime() + definition.lockLifetime) <= new Date()) {
-                const error = new Error("Timeout");
-                job.fail(error);
-                this.emit("fail", error, job);
-                this.emit("fail:" + jobName, error, job);
-                yield this.saveJob(job);
+            // console.log(
+            //   !!result.value.lastRunAt,
+            //   new Date(result.value.lastRunAt.getTime() + definition.lockLifetime) <= new Date(),
+            //   (!result.value.failedAt || (result.value.failedAt && result.value.failedAt < result.value.lastRunAt)),
+            //   (!result.value.repeatInterval || (result.value.repeatInterval && new Date() <= result.value.nextRunAt)),
+            //   (result.value.lastFinishedAt <= result.value.failedAt),
+            // )
+            if (result.value.lastRunAt &&
+                new Date(result.value.lastRunAt.getTime() + definition.lockLifetime) <= new Date()) {
+                if ((!result.value.failedAt || (result.value.failedAt && result.value.failedAt < result.value.lastRunAt)) &&
+                    (!result.value.repeatInterval || (result.value.repeatInterval && new Date() <= result.value.nextRunAt)) &&
+                    (!result.value.repeatInterval || (result.value.repeatInterval && result.value.lastFinishedAt <= result.value.failedAt))) {
+                    const error = new Error("Timeout");
+                    job.fail(error);
+                    this.emit("fail", error, job);
+                    this.emit("fail:" + jobName, error, job);
+                    yield this.saveJob(job);
+                }
                 return undefined;
             }
         }

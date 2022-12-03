@@ -73,13 +73,24 @@ export const findAndLockNextJob = async function (
     // @ts-ignore
     job = createJob(this, result.value);
 
-    if (result.value.lastRunAt && new Date(result.value.lastRunAt.getTime() + definition.lockLifetime) <= new Date()) {
-      const error = new Error("Timeout")
-      job.fail(error)
-      this.emit("fail", error, job);
-      this.emit("fail:" + jobName, error, job);
-      await this.saveJob(job)
+    if (
+      result.value.lastRunAt &&
+      new Date(result.value.lastRunAt.getTime() + definition.lockLifetime) <= new Date()
+    ) {
+      if (
+        (!result.value.failedAt || (result.value.failedAt && result.value.failedAt < result.value.lastRunAt)) &&
+        (!result.value.repeatInterval || (result.value.repeatInterval && new Date() <= result.value.nextRunAt)) &&
+        (!result.value.repeatInterval || (result.value.repeatInterval && result.value.lastFinishedAt <= result.value.failedAt))
+      ) {
+        const error = new Error("Timeout")
+        job.fail(error)
+        this.emit("fail", error, job);
+        this.emit("fail:" + jobName, error, job);
+        await this.saveJob(job)
+      }
+
       return undefined
+
     }
 
   }
